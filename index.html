@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sample</title>
+</head>
+
+<body>
+    <h1>ユーザ特定</h1>
+
+    <script>
+        // ローカルストレージから探す
+        const userId = localStorage.getItem('chise_web_id');
+
+        if (userId) {
+            // すでに保存されている
+            document.write(`<p>お帰りなさい ${userId} さん！！！</p>`);
+        } else {
+            // 保存されていない
+            const newUserId = generateUserId(); // ユーザIDを生成
+            localStorage.setItem('chise_web_id', newUserId); // ローカルストレージに保存
+            document.write(`<p>${newUserId} さん はじめまして！！！</p>`);
+        }
+
+        // もうちょい複雑化する
+        function generateUserId() {
+            return Math.floor(Math.random() * 1000); // ランダムなユーザIDの生成
+        }
+    </script>
+</body>
+
+</html>
